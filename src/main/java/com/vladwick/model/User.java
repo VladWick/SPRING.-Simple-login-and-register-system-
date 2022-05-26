@@ -1,5 +1,6 @@
 package com.vladwick.model;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
@@ -33,6 +34,11 @@ public class User {
 	
 	private String password;
 	
+	@Column(name="info")
+	private String info;
+	
+	@Column(name="balance")
+	private BigDecimal balance;
 	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(
@@ -43,15 +49,16 @@ public class User {
 					name = "role_id", referencedColumnName = "id"))
 	private Collection<Role> roles;
 	
-	
 	public User() {
 		
 	}
-	public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
+	public User(String firstName, String lastName, String email, String info, BigDecimal balance, String password, Collection<Role> roles) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.info = info;
+		this.balance = balance;
 		this.password = password;
 		this.roles = roles;
 	}
@@ -86,6 +93,18 @@ public class User {
 		this.password = password;
 	}
 	
+	public String getInfo() {
+		return info;
+	}
+	public void setInfo(String info) {
+		this.info = info;
+	}
+	public BigDecimal getBalance() {
+		return balance;
+	}
+	public void setBalance(BigDecimal balance) {
+		this.balance = balance;
+	}
 	public Collection<Role> getRoles() {
 		return roles;
 	}

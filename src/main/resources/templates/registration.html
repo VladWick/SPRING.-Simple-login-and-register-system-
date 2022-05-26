@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Registration</title>
+<title>VSystem</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
@@ -10,7 +10,6 @@
 </head>
 <body>
 
-	<!-- create navigation bar ( header) -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -21,15 +20,14 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#" th:href="@{/}">Registration and
-					Login Module</a>
+				<a class="navbar-brand" href="#" th:href="@{/}">VSystem</a>
 			</div>
 		</div>
 	</nav>
 
 <br>
 <br>
-	<!-- Create HTML registration form -->
+	
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
@@ -60,7 +58,19 @@
 							id="email" class="form-control" th:field="*{email}" required
 							autofocus="autofocus" />
 					</div>
-
+					
+					<div class="form-group">
+						<label class="control-label" for="email"> Info </label> <input
+							id="info" class="form-control" th:field="*{info}" required
+							autofocus="autofocus" />
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label" for="balance"> Balance </label> <input
+							id="balance" class="form-control" th:field="*{balance}" required
+							autofocus="autofocus" />
+					</div>
+					
 					<div class="form-group">
 						<label class="control-label" for="password"> Password </label> <input
 							id="password" class="form-control" type="password"

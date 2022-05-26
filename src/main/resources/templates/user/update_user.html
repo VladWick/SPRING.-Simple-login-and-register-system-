@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	
+<head>
+	<meta charset="ISO-8859-1">
+	<title>VSystem</title>
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand" th:href="@{/}">VSystem</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNav">
+	    <ul class="navbar-nav">
+	      <li class="nav-item active">
+	        <a class="nav-link" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="https://github.com/VladWick">Github</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" th:href="@{/swagger-ui/index.html}">Documentation</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link disabled" th:href="@{/}">Contact</a>
+	      </li>
+	      <li class="nav-item" sec:authorize="isAuthenticated()">
+	        <a class="nav-link" th:href="@{/logout}">Logout</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+	
+	<br>
+	<br>
+	
+	<div class="row">
+			<div class="col-lg-3">
+				<a th:href = "@{/users}" class="btn btn-primary btn-sm mb-3">Back to list</a> 
+			</div>
+	</div>
+	
+	<br>
+	<br>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-lg col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center"> Update User </h1>
+				<div class="card-body">
+					<form th:action="@{/users/{id} (id=${user.id})}" th:object="${user}" method="POST">
+						<div class="form-group">
+							<label> User First Name</label>
+							<input 
+							type="text"
+							name="firstName"
+							th:field="*{firstName}"
+							class="form-control"
+							placeholder="Enter User First Name"
+							/>
+						</div>
+						<div class="form-group">
+							<label> User Last Name</label>
+							<input 
+							type="text"
+							name="lastName"
+							th:field="*{lastName}"
+							class="form-control"
+							placeholder="Enter User Last Name"
+							/>
+						</div>
+						<div class="form-group">
+							<label> User Email</label>
+							<input 
+							type="text"
+							name="email"
+							th:field="*{email}"
+							class="form-control"
+							placeholder="Enter User Email"
+							/>
+						</div>
+						<div class="form-group">
+							<label>User Password</label>
+							<input 
+							type="text"
+							name="password"
+							th:field="*{password}"
+							class="form-control"
+							placeholder="Enter User Password"
+							/>
+						</div>
+						<div class="form-group">
+							<label>User Info</label>
+							<input 
+							type="text"
+							name="info"
+							th:field="*{info}"
+							class="form-control"
+							placeholder="Enter User Info"
+							/>
+						</div>
+						<div class="form-group">
+							<label>User Balance</label>
+							<input 
+							type="text"
+							name="balance"
+							th:field="*{balance}"
+							class="form-control"
+							placeholder="Enter User Balance"
+							/>
+						</div>
+						
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary">
+								Submit
+							</button>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

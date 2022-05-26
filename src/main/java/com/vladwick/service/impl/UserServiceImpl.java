@@ -1,7 +1,8 @@
-package com.vladwick.service;
+package com.vladwick.service.impl;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,9 @@ import org.springframework.stereotype.Service;
 
 import com.vladwick.model.Role;
 import com.vladwick.model.User;
+import com.vladwick.model.UserRegistrationDto;
 import com.vladwick.repository.UserRepository;
-import com.vladwick.web.dto.UserRegistrationDto;
+import com.vladwick.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -29,13 +31,21 @@ public class UserServiceImpl implements UserService{
 		super();
 		this.userRepository = userRepository;
 	}
-
+	
+	public List<User> getAllUsers(){
+		return userRepository.findAll();
+	}
+	
 	@Override
 	public User save(UserRegistrationDto registrationDto) {
+		/*
 		User user = new User(registrationDto.getFirstName(), 
 				registrationDto.getLastName(), registrationDto.getEmail(),
-				passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(new Role("ROLE_USER")));
-		
+			    registrationDto.getInfo(), registrationDto.getBalance(), passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(new Role("USER")));
+		*/
+		User user = new User(registrationDto.getFirstName(), 
+				registrationDto.getLastName(), registrationDto.getEmail(),
+			    registrationDto.getInfo(), registrationDto.getBalance(), passwordEncoder.encode(registrationDto.getPassword()), registrationDto.getRoles());
 		return userRepository.save(user);
 	}
 
@@ -51,6 +61,27 @@ public class UserServiceImpl implements UserService{
 	
 	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
+	}
+
+	
+	@Override
+	public User saveUser(User User) {
+		return userRepository.save(User);
+	}
+	
+	@Override
+	public User getUserById(Long id) {
+		return userRepository.findById(id).get();
+	}
+
+	@Override
+	public User updateUser(User User) {
+		return userRepository.save(User);
+	}
+
+	@Override
+	public void deleteUserById(Long id) {
+		userRepository.deleteById(id);
 	}
 	
 }

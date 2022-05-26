@@ -15,43 +15,43 @@ public class TransferLog {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long transferId;
 	
-	@Column(name="from")
-	private Long from;
+	@Column(name="transferFrom")
+	private Long transferFrom;
 	
-	@Column(name="to")
-	private Long to;
+	@Column(name="transferTo")
+	private Long transferTo;
 	
-	@Column(name="amount")
+	@Column(name="transferAmount")
 	private BigDecimal amount;
 	
 	public TransferLog() {
 		
 	}
-	public TransferLog(Long from, Long to, BigDecimal amount) {
+	public TransferLog(Long id, Long from, Long to, BigDecimal amount) {
 		super();
-		this.from = from;
-		this.to = to;
+		this.transferFrom = from;
+		this.transferTo = to;
 		this.amount = amount;
 	}
 	public Long getTransferId() {
-		return this.id;
+		return this.transferId;
 	}
 	public void setTransferId(Long transferId) {
-		this.id = transferId;
+		this.transferId = transferId;
 	}
 	public Long getFrom() {
-		return from;
+		return transferFrom;
 	}
 	public void setFrom(Long from) {
-		this.from = from;
+		this.transferFrom = from;
 	}
 	public Long getTo() {
-		return to;
+		return transferTo;
 	}
 	public void setTo(Long to) {
-		this.to = to;
+		this.transferTo = to;
 	}
 	public BigDecimal getAmount() {
 		return amount;

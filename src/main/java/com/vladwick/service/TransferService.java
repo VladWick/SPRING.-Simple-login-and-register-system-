@@ -7,15 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.vladwick.model.TransferBalance;
+import com.vladwick.model.TransferLog;
 import com.vladwick.model.User;
+import com.vladwick.repository.TransferLogRepository;
 import com.vladwick.repository.TransferRepository;
-import com.vladwick.repository.UserRepository;
 
 @Service
 public class TransferService {
 	
 	@Autowired
 	private TransferRepository transferRepository;
+		
+	@Autowired 
+	private TransferLogRepository transferLogRepository;
 	
 	@Autowired
 	private UserService userService;
@@ -56,6 +60,11 @@ public class TransferService {
         
         transferRepository.save(transferBalance.getFrom(), updatedFromBalance);
         transferRepository.save(transferBalance.getTo(), updatedToBalance);
+        
+        /* ----- ----- */
+        
+        TransferLog transferLog = new TransferLog(1L, transferBalance.getFrom(), transferBalance.getTo(), transferBalance.getAmount());
+        transferLogRepository.save(transferLog);
         
         /* ----- ----- */
         

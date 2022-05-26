@@ -41,7 +41,6 @@ public class TransferWeb {
 	
 	@PostMapping("/transfer/make_transfer")
 	public String makeTransfer(@ModelAttribute("transferBalance") TransferBalance transferBalance) {
-		// TransferBalance transferBalance = new TransferBalance(idFrom, idTo, amount);
 		transferService.makeTransfer(transferBalance);
 		return "redirect:/transfer/make_transfer?success";
 	}

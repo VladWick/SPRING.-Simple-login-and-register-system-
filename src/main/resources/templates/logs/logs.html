@@ -26,7 +26,7 @@
 					<li><a th:href="@{/}">Home</a></li>
 				</ul>
 				<ul class="nav navbar-nav">
-					<li><a href="https://github.com/VladWick">GitHUB</a></li>
+					<li><a href="https://github.com/VladWick/VSystem">GitHUB</a></li>
 				</ul>
 				<ul class="nav navbar-nav">
 					<li><a th:href="@{/swagger-ui/index.html}">Documentation</a></li>
@@ -46,7 +46,7 @@
 	
 	<div class="container">
 		<div class="row">
-			<h1>Users</h1>
+			<h1>Transfer Logs</h1>
 		</div>
 		
 		<table class="table table-striped table-bordered" >
@@ -55,13 +55,17 @@
 				 	<th>Transfer id</th>
 				 	<th>Transfer From</th>
 				 	<th>Transfer To</th>
+				 	<th>Transfer Amount</th>
 				 </tr>
 			</thead>
 			
 			<tbody>
 				<tr th:each = "transfer: ${transfers}">
-					<td th:text = "${transfer.from}"></td>
-					<td th:text = "${transfer.to}"></td>
+				
+					<td th:text = "${transfer.getTransferId()}"></td>
+					<td th:text = "${transfer.getFrom}"></td>
+					<td th:text = "${transfer.getTo()}"></td>
+					<td th:text = "${transfer.getAmount()}"></td>
 					
 					<!-- 
 					<td>

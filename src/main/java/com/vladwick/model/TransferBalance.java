@@ -2,9 +2,6 @@ package com.vladwick.model;
 
 import java.math.BigDecimal;
 
-import lombok.Data;
-
-@Data
 public class TransferBalance { 
 	
     private Long from;
@@ -14,7 +11,6 @@ public class TransferBalance {
     public TransferBalance() {
     	
     }
-    
 	public TransferBalance(Long from, Long to, BigDecimal amount) {
 		super();
 		this.from = from;

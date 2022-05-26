@@ -7,13 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.vladwick.model.TransferBalance;
+import com.vladwick.model.User;
 import com.vladwick.repository.TransferRepository;
+import com.vladwick.repository.UserRepository;
 
 @Service
 public class TransferService {
 	
 	@Autowired
 	private TransferRepository transferRepository;
+	
+	@Autowired
+	private UserService userService;
 	
 	public List<BigDecimal> getBalances(){
 		return transferRepository.getBalances();
@@ -51,5 +56,15 @@ public class TransferService {
         
         transferRepository.save(transferBalance.getFrom(), updatedFromBalance);
         transferRepository.save(transferBalance.getTo(), updatedToBalance);
+        
+        /* ----- ----- */
+        
+        User userFrom = transferRepository.getUserById(transferBalance.getFrom());
+        User userTo = transferRepository.getUserById(transferBalance.getTo());
+		userFrom.setBalance(updatedFromBalance);
+		userTo.setBalance(updatedToBalance);
+
+		userService.updateUser(userFrom);
+		userService.updateUser(userTo);
 	}
 }

@@ -31,5 +31,10 @@ public class TransferRepository {
 	public void save(Long id, BigDecimal updatedBalance) {
 		userService.getUserById(id).setBalance(updatedBalance);
 	}
+
+	public User getUserById(Long id) {
+		User user = userService.getUserById(id);
+		return user;
+	}
 	
 }

@@ -28,17 +28,17 @@ public class TransferApiController {
 		return ResponseEntity.ok(transferService.getBalances());
 	}
 	
-	@GetMapping("transfer/{accountId}")
+	@GetMapping("/transfer/{accountId}")
     public ResponseEntity<BigDecimal> getBalance(@PathVariable Long accountId) {
 		return ResponseEntity.ok(transferService.getBalance(accountId));
     }
 
-    @PostMapping("transfer/add")
+    @PostMapping("/transfer/add")
     public ResponseEntity<BigDecimal> addMoney(@RequestBody TransferBalance transferBalance) {
     	return ResponseEntity.ok(transferService.addMoney(transferBalance.getTo(), transferBalance.getAmount()));
     }
 
-    @PostMapping("transfer/transfer")
+    @PostMapping("/transfer/transfer")
     public void transfer(@RequestBody TransferBalance transferBalance) {
     	transferService.makeTransfer(transferBalance);
     }

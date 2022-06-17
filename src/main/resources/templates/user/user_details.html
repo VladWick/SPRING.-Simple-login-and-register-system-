@@ -57,7 +57,7 @@
 					<h5>Email: <b th:text = "${user.email}"></b> </h5>
 					<h5>Password: <b th:text = "${user.password}"></b> </h5>
 					<hr>
-					<h5>Roles: <b th:text = "${user.roles}"></b> </h5>
+					<h5>Roles: <b th:text = "${user.roles.get(0).getName()}"></b> </h5>
 					<hr>
 					<h5>Info: <b th:text = "${user.info}"></b> </h5>
 					<hr>

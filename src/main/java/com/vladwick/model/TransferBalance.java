@@ -2,10 +2,17 @@ package com.vladwick.model;
 
 import java.math.BigDecimal;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class TransferBalance { 
 	
+	@ApiModelProperty(notes = "Id of the user from which money was taken", example = "1", required = true) 
     private Long from;
+	
+	@ApiModelProperty(notes = "Id of the user to which money was transfered", example = "3", required = true) 
     private Long to;
+	
+	@ApiModelProperty(notes = "Amount of money that needs to be transfered", example = "100", required = true) 
     private BigDecimal amount;
     
     public TransferBalance() {

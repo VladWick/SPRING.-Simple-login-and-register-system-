@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.vladwick.repository.TransferLogRepository;
 import com.vladwick.service.TransferLogService;
 
+import springfox.documentation.annotations.ApiIgnore;
+
 @Controller
+@ApiIgnore
 public class LogWeb {
 	
 	@Autowired

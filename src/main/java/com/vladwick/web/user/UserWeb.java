@@ -1,5 +1,7 @@
 package com.vladwick.web.user;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,10 +10,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.vladwick.model.Role;
 import com.vladwick.model.User;
 import com.vladwick.service.UserService;
 
+import springfox.documentation.annotations.ApiIgnore;
+
 @Controller 
+@ApiIgnore
 public class UserWeb {
 	
 	@Autowired
@@ -56,7 +62,7 @@ public class UserWeb {
 		existingUser.setInfo(User.getInfo());
 		existingUser.setPassword(User.getPassword());
 		
-		existingUser.setRoles(User.getRoles());
+		existingUser.setRoles(Arrays.asList(new Role("USER")));
 		
 		userService.updateUser(existingUser);
 		return "redirect:/users";

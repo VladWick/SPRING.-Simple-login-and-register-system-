@@ -9,21 +9,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name="transfers")
 public class TransferLog {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@ApiModelProperty(notes = "Transfer ID", example = "1", required = true) 
 	private Long transferId;
 	
 	@Column(name="transferFrom")
+	@ApiModelProperty(notes = "Id of the user from which money was taken", example = "3", required = true) 
 	private Long transferFrom;
 	
 	@Column(name="transferTo")
+	@ApiModelProperty(notes = "Id of the user to which money was transfered", example = "1", required = true) 
 	private Long transferTo;
 	
 	@Column(name="transferAmount")
+	@ApiModelProperty(notes = "Amount of money that needs to be transfered", example = "100", required = true) 
 	private BigDecimal amount;
 	
 	public TransferLog() {

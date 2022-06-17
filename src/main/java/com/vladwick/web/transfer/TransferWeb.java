@@ -14,7 +14,10 @@ import com.vladwick.model.UserRegistrationDto;
 import com.vladwick.service.TransferService;
 import com.vladwick.service.UserService;
 
+import springfox.documentation.annotations.ApiIgnore;
+
 @Controller
+@ApiIgnore
 public class TransferWeb {
 	
 	@Autowired

@@ -3,13 +3,26 @@ package com.vladwick.model;
 import java.math.BigDecimal;
 import java.util.Collection;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class UserRegistrationDto {
 	
+	@ApiModelProperty(notes = "Name of the user", example = "Vlad", required = true) 
 	private String firstName;
+	
+	@ApiModelProperty(notes = "Surname of the user", example = "Wick", required = true)
 	private String lastName;
+	
+	@ApiModelProperty(notes = "Email of the user", example = "vladwick@gmail.com", required = true)
 	private String email;
+	
+	@ApiModelProperty(notes = "Information about user", example = "Sample text", required = true)
 	private String info;
+	
+	@ApiModelProperty(notes = "Balance of the user", example = "10900", required = true)
 	private BigDecimal balance;
+	
+	@ApiModelProperty(notes = "Password of the user", example = "kngu76ehv_a", required = true)
 	private String password;
 	
 	private Collection<Role> roles;

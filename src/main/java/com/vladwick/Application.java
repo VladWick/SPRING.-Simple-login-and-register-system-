@@ -11,6 +11,9 @@ public class Application {
 	}
 }
 
+//http://localhost:8089/v3/api-docs
+//https://t.me/VladB2001
+
 //Swagger 2
 //http://localhost:8089/swagger-ui.html
 //Swagger 3

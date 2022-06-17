@@ -38,14 +38,9 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public User save(UserRegistrationDto registrationDto) {
-		/*
 		User user = new User(registrationDto.getFirstName(), 
 				registrationDto.getLastName(), registrationDto.getEmail(),
 			    registrationDto.getInfo(), registrationDto.getBalance(), passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(new Role("USER")));
-		*/
-		User user = new User(registrationDto.getFirstName(), 
-				registrationDto.getLastName(), registrationDto.getEmail(),
-			    registrationDto.getInfo(), registrationDto.getBalance(), passwordEncoder.encode(registrationDto.getPassword()), registrationDto.getRoles());
 		return userRepository.save(user);
 	}
 
@@ -65,8 +60,10 @@ public class UserServiceImpl implements UserService{
 
 	
 	@Override
-	public User saveUser(User User) {
-		return userRepository.save(User);
+	public User saveUser(User user) {
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setRoles(Arrays.asList(new Role("USER")));
+		return userRepository.save(user);
 	}
 	
 	@Override

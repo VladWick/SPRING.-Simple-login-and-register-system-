@@ -16,28 +16,37 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name="user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@ApiModelProperty(notes = "User ID", example = "1", required = true) 
 	private Long id;
 	
 	@Column(name="first_name")
+	@ApiModelProperty(notes = "Name of the user", example = "Vlad", required = true) 
 	private String firstName;
 	
 	@Column(name="last_name")
+	@ApiModelProperty(notes = "Surname of the user", example = "Wick", required = true)
 	private String lastName;
 	
+	@ApiModelProperty(notes = "Email of the user", example = "vladwick@gmail.com", required = true)
 	private String email;
 	
+	@ApiModelProperty(notes = "Password of the user", example = "kngu76ehv_a", required = true)
 	private String password;
 	
 	@Column(name="info")
+	@ApiModelProperty(notes = "Information about user", example = "Sample text", required = true)
 	private String info;
 	
 	@Column(name="balance")
+	@ApiModelProperty(notes = "Balance of the user", example = "10900", required = true)
 	private BigDecimal balance;
 	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -47,6 +56,7 @@ public class User {
 					name = "user_id", referencedColumnName = "id"),
 			inverseJoinColumns = @JoinColumn(
 					name = "role_id", referencedColumnName = "id"))
+	@ApiModelProperty(notes = "Roles of the user", example = "USER", required = true)
 	private Collection<Role> roles;
 	
 	public User() {

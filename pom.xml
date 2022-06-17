@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.vladwick</groupId>
-	<artifactId>3-registration-login-system</artifactId>
+	<artifactId>3-VSystem</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>3-registration-login-system</name>
-	<description>registration-login-system</description>
+	<name>3-VSystem</name>
+	<description>VSystem</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -60,12 +60,16 @@
 			<scope>test</scope>
 		</dependency>
 		
+		<!-- -->
+		
 		<dependency>
-	      <groupId>org.springdoc</groupId>
-	      <artifactId>springdoc-openapi-ui</artifactId>
-	      <version>1.6.8</version>
-	   </dependency>
-
+		 <groupId>io.springfox</groupId>
+		 <artifactId>springfox-boot-starter</artifactId>
+		 <version>3.0.0</version>
+		</dependency>
+		
+		<!-- -->
+		
 	</dependencies>
 
 	<build>

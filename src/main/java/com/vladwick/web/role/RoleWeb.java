@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.vladwick.service.RoleService;
 import com.vladwick.service.UserService;
 
+import springfox.documentation.annotations.ApiIgnore;
+
 @Controller
+@ApiIgnore
 public class RoleWeb {
 
 	@Autowired

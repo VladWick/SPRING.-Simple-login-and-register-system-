@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.vladwick.model.UserRegistrationDto;
 import com.vladwick.service.UserService;
 
+import springfox.documentation.annotations.ApiIgnore;
+
 @Controller
 @RequestMapping("/registration") 
+@ApiIgnore
 public class UserRegistrationWeb {
 	
 	@Autowired

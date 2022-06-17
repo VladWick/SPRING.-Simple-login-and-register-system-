@@ -6,13 +6,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name = "role")
 public class Role {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@ApiModelProperty(notes = "Role ID", example = "1", required = true) 
 	private Long id;
+	
+	@ApiModelProperty(notes = "Name of the role", example = "USER", required = true) 
 	private String name;
 	
 	public Role() {
